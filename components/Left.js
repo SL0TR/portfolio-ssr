@@ -1,4 +1,4 @@
-import { AnimatedThemeButton } from "./buttons";
+import { AnimatedThemeButton } from "./Buttons";
 
 function Left() {
   return (
