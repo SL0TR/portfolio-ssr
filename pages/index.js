@@ -10,7 +10,19 @@ export default function Home(props) {
     <>
       <Head>
         <title>Mohaimin</title>
-        <meta name="description" content="Portfolio site of Mohaimin" />
+        <meta name="description" content="Portfolio site of Mohaimin Islam" />
+        <meta property="og:title" content="Mohaimin Islam" />
+        <meta property="og:url" content="https://mohaimin.me/" />
+        <meta
+          property="og:description"
+          content="Portfolio site of Mohaimin Islam"
+        />
+        <meta
+          property="og:image"
+          content="https://lh4.googleusercontent.com/k3ARY5zGzPkmJvn0i6lCn0Esax8f3XYw1_EyKW4JPyDzNwGScUQ-rECJbDJ72jvE_awcLDI22aCHUR7AZ3fe=w2940-h5226-rw"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_GB" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeSwitcher {...props} />
