@@ -9,7 +9,7 @@ export default function Home(props) {
   return (
     <>
       <Head>
-        <title>Mohaimin</title>
+        <title>Mohaimin Islam</title>
         <meta name="description" content="Portfolio site of Mohaimin Islam" />
         <meta property="og:title" content="Mohaimin Islam" />
         <meta property="og:url" content="https://mohaimin.me/" />
