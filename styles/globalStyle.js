@@ -46,18 +46,6 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 2.5rem;
   }
 
-  h1,
-  h2,
-  h3,
-  h5,
-  p,
-  button,
-  a {
-    text-align: ${(props) => props.center && props.theme.center};
-    margin: 1rem 0;
-  }
-
-
   p {
     font-size: 1.6rem;
     color: ${(props) => props.theme.fg};

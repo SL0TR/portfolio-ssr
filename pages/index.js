@@ -3,8 +3,10 @@ import Script from 'next/script'
 import { HomeContainer } from "../components/Containers";
 import Footer from "../components/Footer";
 import Left from "../components/Left";
+import ParticleCss from "../components/ParticleCss";
 import Right from "../components/Right";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+
 
 export default function Home(props) {
   return (
@@ -27,6 +29,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeSwitcher {...props} />
+      <ParticleCss />
       <HomeContainer>
         <main className="main-content">
           <Left />

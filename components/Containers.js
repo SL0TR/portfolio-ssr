@@ -16,7 +16,8 @@ export const HomeContainer = styled.div`
     height: 95%;
     width:  100%;
     align-items: center;
-
+    z-index: 5;
+    
     .left,
     .right {
       width: 50%;
@@ -25,8 +26,8 @@ export const HomeContainer = styled.div`
     }
 
     .left {
-      ${media("sm")`padding-top: 6rem;`}
-      text-align: center;
+      ${media("sm")`padding-top: 6rem;  text-align: center;`}
+     
 
       h1 {
         
@@ -36,6 +37,12 @@ export const HomeContainer = styled.div`
         )`font-size: 3.5rem;`}
       }
 
+      margin-bottom: 1rem;
+
+    }
+
+    h1, p, a {
+      margin-bottom: 1.5rem;
     }
 
     /* .right {
