@@ -1,6 +1,7 @@
 import Head from "next/head";
-
+import Script from 'next/script'
 import { HomeContainer } from "../components/Containers";
+import Footer from "../components/Footer";
 import Left from "../components/Left";
 import Right from "../components/Right";
 import ThemeSwitcher from "../components/ThemeSwitcher";
@@ -27,9 +28,14 @@ export default function Home(props) {
       </Head>
       <ThemeSwitcher {...props} />
       <HomeContainer>
-        <Left />
-        <Right />
+        <main className="main-content">
+          <Left />
+          <Right />
+        </main>
+        <Footer />
       </HomeContainer>
+      <Script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></Script>
+      <Script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></Script>
     </>
   );
 }

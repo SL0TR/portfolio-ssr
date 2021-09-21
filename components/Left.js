@@ -58,6 +58,7 @@ function Left() {
       <a href="mailto:mohaiminislam94@gmail.com">
         <AnimatedThemeButton>Contact Me</AnimatedThemeButton>
       </a>
+      
     </div>
   );
 }
