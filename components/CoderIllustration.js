@@ -3,7 +3,10 @@ import styled from "styled-components";
 const Icon = styled.svg`
   flex: none;
   transition: fill 0.3s ease-in-out;
-
+  position: absolute;
+  height: 70rem;
+  right: -40rem;
+  top: 15rem;
   path[fill="#6c63ff"],
   path[fill="#e14b5a"],
   ellipse[fill="#e14b5a"] {
@@ -20,7 +23,7 @@ const Icon = styled.svg`
   }
 `;
 
-const CoderIllustrat = ({ fill }) => {
+const CoderIllustrat = ({ fill, ...rest }) => {
   return (
     <Icon
       id="6088ba52-b752-42bb-ac91-0a74df332082"
@@ -30,6 +33,7 @@ const CoderIllustrat = ({ fill }) => {
       width="100%"
       height="100%"
       viewBox="0 0 900.94 787"
+      {...rest}
     >
       <defs>
         <linearGradient

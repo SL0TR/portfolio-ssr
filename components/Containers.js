@@ -4,7 +4,7 @@ import { media } from "../styles/utils";
 export const HomeContainer = styled.div`
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 200vh;
   align-items: center;
   flex-direction: column;
   padding: 5.5rem;
@@ -27,7 +27,9 @@ export const HomeContainer = styled.div`
 
     .left {
       ${media("sm")`padding-top: 6rem;  text-align: center;`}
-     
+      position: absolute;
+      left: 10rem;
+      top: 45rem;
 
       h1 {
         

@@ -1,18 +1,19 @@
 import { AnimatedThemeButton } from "./Buttons";
 import Typed from "typed.js";
 import { useEffect, useRef } from "react";
-// import anime from "animejs";
+import useParallax from "../libs/hooks/useParallax";
+
 
 function Left() {
   const greetingEL = useRef(null);
   const greetingTyped = useRef(null);
-  // const animationRef = useRef(null);
+  const offsetY = useParallax()
+
 
   useEffect(() => {
     const greetingString = [
       "Hello",
       "হ্যালো",
-      "こんにちは",
       "Bonjour",
       "Hola",
       "Hello",
@@ -33,22 +34,10 @@ function Left() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   animationRef.current = anime({
-  //     targets: ".el",
-  //     translateY: 250,
-  //     delay: function (el, i) {
-  //       return i * 100;
-  //     },
-  //     // loop: true,
-  //     // direction: "alternate",
-  //     easing: "easeInOutSine",
-  //   });
-  // }, []);
+ 
 
   return (
-    <div className="left">
-      {/* <div className="el">Habahsdbashd </div> */}
+    <div className="left" style={{ transform: `translateY(-${offsetY * 0.4}px)` }}>
       <h1>
         <span style={{ whiteSpace: "pre" }} ref={greetingEL} /> <br /> I&apos;m
         Mohaimin,

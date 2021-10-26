@@ -3,10 +3,9 @@ import Script from 'next/script'
 import { HomeContainer } from "../components/Containers";
 import Footer from "../components/Footer";
 import Left from "../components/Left";
-import ParticleCss from "../components/ParticleCss";
 import Right from "../components/Right";
 import ThemeSwitcher from "../components/ThemeSwitcher";
-
+import ParallaxHome from '../components/ParallaxHome'
 
 export default function Home(props) {
   return (
@@ -29,12 +28,13 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeSwitcher {...props} />
-      <ParticleCss />
+      {/* <ParticleCss /> */}
       <HomeContainer>
         <main className="main-content">
           <Left />
           <Right />
         </main>
+        {/* <ParallaxHome /> */}
         <Footer />
       </HomeContainer>
       <Script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></Script>

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, invertedTheme, theme } from "../styles";
-import '../styles/particle.css';
+
 
 function MyApp({ Component, pageProps }) {
-  const [isLightTheme, setIsLightTheme] = useState(false);
+  const [isLightTheme, setIsLightTheme] = useState(true);
 
   function toggleTheme() {
     setIsLightTheme(!isLightTheme);
