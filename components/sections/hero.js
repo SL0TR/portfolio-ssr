@@ -28,7 +28,7 @@ function HeroSection() {
         >
           <h1 className="dark:text-white text-5xl font-bold">
             <span style={{ whiteSpace: "pre" }} ref={greetingEL} /> <br />
-            Hi, I&apos;m
+            I&apos;m Mohaimin
             <br /> A Full Stack Developer
           </h1>
           <p className="text-md mt-3">JS / TS / React / React Native / Node</p>
