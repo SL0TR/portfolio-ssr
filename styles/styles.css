@@ -5,3 +5,52 @@
 .hero-lottie rect {
   fill: transparent;
 }
+
+.button {
+  padding: 0.5rem 2.6rem;
+  border: none;
+  background: none;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 0.3em;
+  transition: all ease-in-out;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  border: 2px solid #2e2e2e;
+  background-color: #2e2e2e;
+  color: #eee;
+}
+
+.button::before {
+  content: "";
+  background-color: #2e2e2e;
+  opacity: 0.5;
+  height: 100%;
+  width: 3em;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -4.5em;
+  transform: skewX(-45deg) translateX(0);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  background-color: #eee;
+  color: #2e2e2e;
+  border-bottom: 4px solid #000;
+}
+
+.button:hover:before {
+  transform: skewX(-45deg) translateX(35.5rem);
+  transition: all 0.5s ease-in-out;
+  background-color: #eee;
+  color: #2e2e2e;
+}

@@ -33,7 +33,7 @@ function HeroSection() {
           </h1>
           <p className="text-md mt-3">JS / TS / React / React Native / Node</p>
           <a href="mailto:mohaiminislam94@gmail.com">
-            <button className="text-xl mt-2">Contact Me</button>
+            <button className="button text-xl mt-4">Contact Me</button>
           </a>
         </div>
       </div>
