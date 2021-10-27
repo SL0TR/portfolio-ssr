@@ -1,26 +1,11 @@
-import { useState } from "react";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle, invertedTheme, theme } from "../styles";
-
+import { Layout } from "components/layout";
+import "../styles/styles.css";
 
 function MyApp({ Component, pageProps }) {
-  const [isLightTheme, setIsLightTheme] = useState(true);
-
-  function toggleTheme() {
-    setIsLightTheme(!isLightTheme);
-  }
-
   return (
-    <>
-      <ThemeProvider theme={isLightTheme ? theme : invertedTheme}>
-        <GlobalStyle />
-        <Component
-          {...pageProps}
-          toggleTheme={toggleTheme}
-          isLightTheme={isLightTheme}
-        />
-      </ThemeProvider>
-    </>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 

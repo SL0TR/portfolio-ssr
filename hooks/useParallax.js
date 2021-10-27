@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from "react";
 
 function useParallax() {
-
   const [offsetY, setOffsetY] = useState(0);
-  const handleScroll = () => setOffsetY(window.pageYOffset);
+
+  const handleScroll = useCallback(() => {
+    setOffsetY(window.pageYOffset);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -11,8 +13,7 @@ function useParallax() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
-  return offsetY
+  return offsetY;
 }
 
-export default useParallax
+export default useParallax;
