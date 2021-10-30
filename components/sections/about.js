@@ -44,8 +44,18 @@ function AboutSection() {
   return (
     <div
       ref={containerHeightElem}
-      className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-white z-20"
+      className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-white z-20 overflow-hidden"
     >
+      <h2
+        className="dark:text-white text-5xl font-bold absolute top-32"
+        style={{
+          transform: `translateY(${
+            multiplier * ((aboutOffsetY + 70) * 0.3)
+          }px)`,
+        }}
+      >
+        About me
+      </h2>
       <div className="relative w-1/2">
         <div
           className="w-full absolute z-10"
@@ -71,7 +81,6 @@ function AboutSection() {
           }}
           ref={rightElem}
         >
-          <h2 className="dark:text-white text-5xl font-bold">About me</h2>
           <p className="text-md mt-3">
             Experienced Full Stack Developer with a demonstrated history of
             working in the computer software industry. Skilled in the JavaScript
