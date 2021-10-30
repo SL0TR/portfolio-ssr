@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useElementSize } from "hooks";
 import { useGlobalStateContext } from "context/GlobalContext";
 
@@ -16,10 +16,14 @@ function AboutSection() {
 
   console.log({ containerHeight });
 
-  useEffect(() => {
+  const updateContainerHeight = useCallback(() => {
     if (aboutContainerHeight) {
-      setContainerHeight((p) => ({ ...p, about: aboutContainerHeight }));
+      setContainerHeight((p) => ({ ...p, hero: aboutContainerHeight }));
     }
+  }, [aboutContainerHeight]);
+
+  useEffect(() => {
+    updateContainerHeight();
   }, [aboutContainerHeight]);
 
   return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useElementSize, useTyped } from "hooks";
 import { useGlobalStateContext } from "context/GlobalContext";
 
@@ -14,15 +14,19 @@ function HeroSection() {
   const containerHeightElem = useRef(null);
   const { height: leftElemHeight } = useElementSize({ elementRef: leftElem });
   const { height: rightElemHeight } = useElementSize({ elementRef: rightElem });
-  const { height: containerHeight } = useElementSize({
+  const { height: heroContainerHeight } = useElementSize({
     elementRef: containerHeightElem,
   });
 
-  useEffect(() => {
-    if (containerHeight) {
-      setContainerHeight((p) => ({ ...p, hero: containerHeight }));
+  const updateContainerHeight = useCallback(() => {
+    if (heroContainerHeight) {
+      setContainerHeight((p) => ({ ...p, hero: heroContainerHeight }));
     }
-  }, [containerHeight]);
+  }, [heroContainerHeight]);
+
+  useEffect(() => {
+    updateContainerHeight();
+  }, [heroContainerHeight]);
 
   return (
     <div
