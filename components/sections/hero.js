@@ -1,22 +1,34 @@
 import React, { useEffect, useRef } from "react";
-import useParallax from "hooks/useParallax";
-import useElementSize from "hooks/useElementSize";
-import useTyped from "hooks/useTyped";
+import { useElementSize, useTyped } from "hooks";
+import { useGlobalStateContext } from "context/GlobalContext";
 
 function HeroSection() {
+  const { offsetY, setContainerHeight } = useGlobalStateContext();
   const greetingEL = useRef(null);
   useTyped({
     elemRef: greetingEL,
     strings: ["Hello", "হ্যালো", "Bonjour", "Hola", "Hello"],
   });
-  const offsetY = useParallax();
   const leftElem = useRef(null);
   const rightElem = useRef(null);
+  const containerHeightElem = useRef(null);
   const { height: leftElemHeight } = useElementSize({ elementRef: leftElem });
   const { height: rightElemHeight } = useElementSize({ elementRef: rightElem });
+  const { height: containerHeight } = useElementSize({
+    elementRef: containerHeightElem,
+  });
+
+  useEffect(() => {
+    if (containerHeight) {
+      setContainerHeight((p) => ({ ...p, hero: containerHeight }));
+    }
+  }, [containerHeight]);
 
   return (
-    <div className="min-h-screen flex flex-row justify-around dark:bg-gray-800 bg-gray-100">
+    <div
+      ref={containerHeightElem}
+      className="min-h-screen flex flex-row justify-around dark:bg-gray-800 bg-gray-100"
+    >
       <div className="relative w-1/3">
         <div
           className="w-full h-200 absolute"
@@ -47,7 +59,7 @@ function HeroSection() {
           }}
           ref={rightElem}
         >
-          <img className="px-2" src="/guy-laptop.svg" />
+          <img className="px-2" src="/guy-laptop.svg" alt="mohaimin coding" />
         </div>
       </div>
     </div>
