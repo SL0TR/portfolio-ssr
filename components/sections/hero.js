@@ -20,7 +20,7 @@ function HeroSection() {
 
   const updateContainerHeight = useCallback(() => {
     if (heroContainerHeight) {
-      setContainerHeight((p) => ({ ...p, hero: heroContainerHeight }));
+      setContainerHeight((prev) => ({ ...prev, hero: heroContainerHeight }));
     }
   }, [heroContainerHeight]);
 

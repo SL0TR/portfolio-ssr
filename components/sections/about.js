@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useElementSize } from "hooks";
 import { useGlobalStateContext } from "context/GlobalContext";
 
@@ -13,51 +13,60 @@ function AboutSection() {
   const { height: aboutContainerHeight } = useElementSize({
     elementRef: containerHeightElem,
   });
-
-  console.log({ containerHeight });
+  const aboutOffsetY = offsetY - containerHeight?.hero;
+  const translateX = aboutOffsetY * 0.6;
+  const [multiplier, setMultiplier] = useState(1);
 
   const updateContainerHeight = useCallback(() => {
     if (aboutContainerHeight) {
-      setContainerHeight((p) => ({ ...p, hero: aboutContainerHeight }));
+      setContainerHeight((prev) => ({ ...prev, about: aboutContainerHeight }));
     }
   }, [aboutContainerHeight]);
+
+  const updateMultiplier = useCallback(() => {
+    const isOnCurrentSection = offsetY >= containerHeight?.hero;
+
+    if (isOnCurrentSection) {
+      setMultiplier(-1);
+    } else {
+      setMultiplier(1);
+    }
+  }, [offsetY, containerHeight.hero]);
 
   useEffect(() => {
     updateContainerHeight();
   }, [aboutContainerHeight]);
+
+  useEffect(() => {
+    updateMultiplier();
+  }, [updateMultiplier]);
 
   return (
     <div
       ref={containerHeightElem}
       className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-white z-20"
     >
-      <div className="relative w-1/3">
+      <div className="relative w-1/2">
         <div
-          // ref={containerRef}
           className="w-full absolute z-10"
           style={{
-            transform: `translateX(${
-              (offsetY - (containerHeight?.hero - 200)) * 0.6
-            }px)`,
+            transform: `translateX(${multiplier * translateX}px)`,
             top: `calc(50% - ${leftElemHeight / 2}px)`,
           }}
           ref={leftElem}
         >
           <img
-            className="px-2"
+            className="px-16"
             src="/guy-thinking.svg"
             alt="mohaimin thinking"
           />
         </div>
       </div>
-      <div className="w-1/3"></div>
-      <div className="relative w-1/3">
+      <div className="relative w-1/2">
         <div
-          className="w-full h-200 absolute"
+          className="w-full h-200 absolute px-32"
           style={{
-            transform: `translateX(-${
-              (offsetY - (containerHeight?.hero - 300)) * 0.6
-            }px)`,
+            transform: `translateX(${-(multiplier * translateX)}px)`,
             top: `calc(50% - ${rightElemHeight / 2}px)`,
           }}
           ref={rightElem}

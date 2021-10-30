@@ -1,5 +1,6 @@
 import AboutSection from "components/sections/about";
 import HeroSection from "components/sections/hero";
+import SkillsSection from "components/sections/skills";
 import Head from "next/head";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <main className="flex flex-col w-full ">
         <HeroSection />
         <AboutSection />
+        <SkillsSection />
       </main>
     </div>
   );
