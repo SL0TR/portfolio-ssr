@@ -45,9 +45,7 @@ function AboutSection() {
     >
       <SectionHeader
         style={{
-          transform: `translateY(${
-            multiplier * ((aboutOffsetY + 70) * 0.3)
-          }px)`,
+          transform: `translateY(${multiplier * (aboutOffsetY * 0.3)}px)`,
         }}
         title="About me"
       />
@@ -68,13 +66,13 @@ function AboutSection() {
       </div>
       <div className="relative w-1/2">
         <div
-          className="w-full h-200 absolute px-32"
+          className="w-full h-200 absolute px-16 xl:pt-32 2xl:pt-0"
           style={{
             transform: `translate(${-(multiplier * translateX)}px, -50%)`,
             top: `50%`,
           }}
         >
-          <p className="text-xl mt-3">
+          <p className="2xl:text-xl md:text-md mt-3">
             I love building things that puts value into peoples lives. I have
             started my career as a frontend developer but then transitioned to a
             full stack role. I have built multiple React web applications, React
@@ -82,11 +80,11 @@ function AboutSection() {
             JavaScript and also love TypeScript.
             <br />
             <br />
-            I have almost 5 years of experience in the software industry. Since
-            I have started my career as a frontend developer, I have great
-            experience in building Web and Mobile UIs with complex features and
-            design. Also, tackeled great challenges in the world of backend too.
-            I prefer to keep learning, continue challenging myself, and do
+            I have almost 5 years of experience in the software industry.
+            Because of being a fronten developer first, I have great experience
+            in building Web and Mobile UIs with complex features and design.
+            Also, tackeled great challenges in the world of backend too. I
+            prefer to keep learning, continue challenging myself, and do
             interesting things that matter.
             <br />
             <br />
