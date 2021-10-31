@@ -70,3 +70,14 @@ p {
   background-color: #eee;
   color: #2e2e2e;
 }
+.group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}

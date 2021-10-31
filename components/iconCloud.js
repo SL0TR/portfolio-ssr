@@ -1,11 +1,10 @@
 import React, { useEffect, useRef } from "react"
-import { ReactJs} from '@icons-pack/react-simple-icons';
 import simpleIcons from 'simple-icons';
 import {hex2rgb} from '@csstools/convert-colors'
-
+import { v4 as uuidv4 } from 'uuid';
 
 const getIconTags = (tags = []) =>  tags.map(icon => ({
-  id: icon?.slug,
+  id: uuidv4(),
   icon: simpleIcons.Get(icon?.slug),
   href: icon?.url,
   imgUrl: icon?.imgUrl || null
@@ -52,7 +51,7 @@ const getTag = (
           alt={icon?.title} 
           src={imgUrl ? imgUrl : getSvgIconUrl(icon)} 
         />
-      
+     <p>{icon?.title}</p> 
     </a>
   )
 
