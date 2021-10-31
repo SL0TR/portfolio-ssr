@@ -29,7 +29,7 @@ function HeroSection() {
   }, [heroContainerHeight]);
 
   return (
-    <div
+    <section
       ref={containerHeightElem}
       className="min-h-screen flex flex-row justify-around dark:bg-gray-800 bg-gray-100"
     >
@@ -42,7 +42,7 @@ function HeroSection() {
           }}
           ref={leftElem}
         >
-          <h1 className="dark:text-white text-5xl font-bold">
+          <h1 className="dark:text-white text-5xl font-bold leading-snug">
             <span style={{ whiteSpace: "pre" }} ref={greetingEL} /> <br />
             I&apos;m Mohaimin
             <br /> A Full Stack Developer
@@ -66,7 +66,7 @@ function HeroSection() {
           <img className="px-2" src="/guy-laptop.svg" alt="mohaimin coding" />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

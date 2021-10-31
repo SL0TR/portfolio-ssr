@@ -1,48 +1,20 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useElementSize } from "hooks";
+import { useMultiplier } from "hooks";
 import { useGlobalStateContext } from "context/GlobalContext";
 import SectionHeader from "components/sectionHeader";
+import { getExpInyears } from "libs/utils";
 
 function AboutSection() {
-  const { offsetY, setContainerHeight, containerHeight } =
-    useGlobalStateContext();
-  const containerHeightElem = useRef(null);
-  const { height: aboutContainerHeight } = useElementSize({
-    elementRef: containerHeightElem,
-  });
+  const { offsetY, containerHeight } = useGlobalStateContext();
   const aboutOffsetY = offsetY - containerHeight?.hero;
   const translateX = aboutOffsetY * 0.6;
-  const [multiplier, setMultiplier] = useState(1);
-
-  const updateContainerHeight = useCallback(() => {
-    if (aboutContainerHeight) {
-      setContainerHeight((prev) => ({ ...prev, about: aboutContainerHeight }));
-    }
-  }, [aboutContainerHeight]);
-
-  const updateMultiplier = useCallback(() => {
-    const isOnCurrentSection = offsetY >= containerHeight?.hero;
-
-    if (isOnCurrentSection) {
-      setMultiplier(-1);
-    } else {
-      setMultiplier(1);
-    }
-  }, [offsetY, containerHeight.hero]);
-
-  useEffect(() => {
-    updateContainerHeight();
-  }, [aboutContainerHeight]);
-
-  useEffect(() => {
-    updateMultiplier();
-  }, [updateMultiplier]);
+  const [multiplier] = useMultiplier({
+    offsetY,
+    prevContainerHeight: containerHeight?.hero,
+  });
 
   return (
-    <div
-      ref={containerHeightElem}
-      className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-white z-20 overflow-hidden"
-    >
+    <section className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-white z-20 overflow-hidden">
       <SectionHeader
         style={{
           transform: `translateY(${multiplier * (aboutOffsetY * 0.3)}px)`,
@@ -72,29 +44,25 @@ function AboutSection() {
             top: `50%`,
           }}
         >
-          <p className="2xl:text-xl md:text-md mt-3">
-            I love building things that puts value into peoples lives. I have
+          <p className="2xl:text-xl md:text-md mt-3 2xl:leading-loose">
+            I love building things that put value into people's lives. I have
             started my career as a frontend developer but then transitioned to a
-            full stack role. I have built multiple React web applications, React
+            full-stack role. I have built multiple React web applications, React
             Native mobile apps and REST APIs with Node. I primarily work with
             JavaScript and also love TypeScript.
             <br />
-            <br />
-            I have almost 5 years of experience in the software industry.
-            Because of being a fronten developer first, I have great experience
-            in building Web and Mobile UIs with complex features and design.
-            Also, tackeled great challenges in the world of backend too. I
-            prefer to keep learning, continue challenging myself, and do
-            interesting things that matter.
-            <br />
-            <br />
-            I’m passionate, expressive, with a natural ability to adapt fast.
+            <br />I have ~{`${getExpInyears()} `}
+            years of experience in the software industry. Because of being a
+            frontend developer first, I have great experience in building Web
+            and Mobile UIs with complex features and design. Also, tackled great
+            challenges in the world of backend too. I prefer to keep learning,
+            continue challenging myself, and do interesting things that matter.
             I’m a quick learner, able to pick up new skills and juggle different
             projects and roles with relative ease.
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
