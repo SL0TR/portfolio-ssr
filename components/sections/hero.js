@@ -50,7 +50,7 @@ function HeroSection() {
           }}
           ref={leftElem}
         >
-          <h1 className="dark:text-white text-5xl font-bold leading-snug">
+          <h1 className="dark:text-white 2xl:text-5xl text-4xl font-bold leading-snug">
             <span style={{ whiteSpace: "pre" }} ref={greetingEL} /> <br />
             I&apos;m Mohaimin
             <br /> A Full Stack Developer
