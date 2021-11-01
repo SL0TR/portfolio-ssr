@@ -2,24 +2,26 @@ import React, { useCallback, useEffect, useRef } from "react";
 import { useElementSize, useTyped } from "hooks";
 import { useGlobalStateContext } from "context/GlobalContext";
 import HeroIllust from "components/heroIllust";
-import { motion } from "framer-motion";
-import { heroContentVariants } from "constants/animationVariants";
+import { motion, useTransform, useViewportScroll } from "framer-motion";
+import {
+  heroContentVariants,
+  heroImgVariants,
+} from "constants/animationVariants";
 
 function HeroSection() {
-  const { offsetY, setContainerHeight } = useGlobalStateContext();
+  const { setContainerHeight } = useGlobalStateContext();
   const greetingEL = useRef(null);
   useTyped({
     elemRef: greetingEL,
     strings: ["Hello", "হ্যালো", "Bonjour", "Hola", "Hello"],
   });
-  const leftElem = useRef(null);
-  const rightElem = useRef(null);
   const containerHeightElem = useRef(null);
-  const { height: leftElemHeight } = useElementSize({ elementRef: leftElem });
-  const { height: rightElemHeight } = useElementSize({ elementRef: rightElem });
   const { height: heroContainerHeight } = useElementSize({
     elementRef: containerHeightElem,
   });
+  const { scrollY } = useViewportScroll();
+  const y1 = useTransform(scrollY, [0, 300], [0, 300]);
+  const y2 = useTransform(scrollY, [0, 300], [0, -100]);
 
   const updateContainerHeight = useCallback(() => {
     if (heroContainerHeight) {
@@ -37,19 +39,12 @@ function HeroSection() {
       className="min-h-screen flex flex-row justify-around dark:bg-gray-800 bg-gray-100"
     >
       <motion.div
-        className="relative w-1/3"
+        className="flex w-1/3 justify-center items-center"
         variants={heroContentVariants}
         initial="hidden"
         animate="visible"
       >
-        <div
-          className="w-full h-200 absolute"
-          style={{
-            transform: `translateY(-${offsetY * 0.4}px)`,
-            top: `calc(50% - ${leftElemHeight / 2}px)`,
-          }}
-          ref={leftElem}
-        >
+        <motion.div className="w-full" style={{ y: y2 }}>
           <h1 className="dark:text-white 2xl:text-5xl text-4xl font-bold leading-snug">
             <span style={{ whiteSpace: "pre" }} ref={greetingEL} /> <br />
             I&apos;m Mohaimin
@@ -58,20 +53,19 @@ function HeroSection() {
           <a href="#about-me">
             <button className="button text-xl mt-4">About Me</button>
           </a>
-        </div>
+        </motion.div>
       </motion.div>
 
-      <div className="relative w-1/3">
-        <div
-          className="w-full absolute z-10"
-          style={{
-            transform: `translateY(${offsetY * 0.6}px)`,
-            top: `calc(50% - ${rightElemHeight / 2}px)`,
-          }}
-          ref={rightElem}
+      <div className="flex w-1/3 justify-center items-center">
+        <motion.div
+          className="w-full"
+          variants={heroImgVariants}
+          initial="hidden"
+          animate="visible"
+          style={{ y: y1 }}
         >
           <HeroIllust />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

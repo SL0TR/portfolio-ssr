@@ -1,19 +1,15 @@
-import { heroImgVariants } from "constants/animationVariants";
 import { motion } from "framer-motion";
 import React from "react";
 
 function HeroIllust(props) {
   return (
-    <motion.svg
+    <svg
       {...props}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       // width="798.62718"
       // height="689.22258"
       viewBox="0 0 37 32"
-      variants={heroImgVariants}
-      initial="hidden"
-      animate="visible"
     >
       <title>guy-laptop</title>
       <path
@@ -82,7 +78,9 @@ function HeroIllust(props) {
         animate={{
           scale: 1.04,
           transition: {
-            yoyo: Infinity,
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 0.8,
           },
         }}
         fill="#6c63ff"
@@ -127,7 +125,9 @@ function HeroIllust(props) {
         animate={{
           rotate: [-10, 12],
           transition: {
-            yoyo: Infinity,
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 1.5,
           },
         }}
         fill="#d0cde1"
@@ -137,7 +137,9 @@ function HeroIllust(props) {
         animate={{
           rotate: [-10, 12],
           transition: {
-            yoyo: Infinity,
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 1.5,
           },
         }}
         fill="#3f3d56"
@@ -147,7 +149,9 @@ function HeroIllust(props) {
         animate={{
           rotate: [14, -12],
           transition: {
-            yoyo: Infinity,
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 2,
           },
         }}
         fill="#d0cde1"
@@ -157,13 +161,15 @@ function HeroIllust(props) {
         animate={{
           rotate: [14, -12],
           transition: {
-            yoyo: Infinity,
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 2,
           },
         }}
         fill="#3f3d56"
         d="M35.089 29.68l0.691-1.028-0.69 1.138 0.001 0.116q-0.076 0.001-0.15-0.003l0.034-1.486-0.001-0.011 0.001-0.002 0.003-0.14-0.757-1.099 0.756 0.994 0.003 0.030 0.026-1.123-0.654-1.139 0.655 0.942-0.007-2.326v-0.008l0 0.008 0.043 1.834 0.596-0.745-0.594 0.903 0.013 1.004 0.548-0.98-0.546 1.128 0.007 0.559 0.797-1.366-0.795 1.56z"
       ></motion.path>
-    </motion.svg>
+    </svg>
   );
 }
 
