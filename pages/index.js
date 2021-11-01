@@ -10,6 +10,16 @@ export default function Home() {
       <Head>
         <title>Mohaimin: Full Stack Developer</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Portfolio site of Mohaimin Islam" />
+        <meta property="og:title" content="Mohaimin Islam" />
+        <meta property="og:url" content="https://mohaimin.me/" />
+        <meta
+          property="og:description"
+          content="Portfolio site of Mohaimin Islam"
+        />
+        <meta property="og:image" content="/site-screenshot.jpg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_GB" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
