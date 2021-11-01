@@ -4,20 +4,15 @@ import {
   backendIconTags,
   frontEndTags,
   mobileIconsTags,
+  stacks,
   toolsIconTags,
 } from "constants/iconTags";
 import { useGlobalStateContext } from "context/GlobalContext";
-import {
-  useTransform,
-  useViewportScroll,
-  motion,
-  useAnimation,
-} from "framer-motion";
-import { useMultiplier } from "hooks";
+import { motion, useAnimation } from "framer-motion";
+import { useMultiplier, useWindowSize } from "hooks";
+import { isScreenSize } from "libs/utils";
 import React, { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-
-const stacks = ["frontend", "backend", "mobile", "tools"];
 
 function SkillsSection() {
   const { offsetY, containerHeight } = useGlobalStateContext();
@@ -26,6 +21,7 @@ function SkillsSection() {
     offsetY,
     prevContainerHeight: containerHeight?.hero,
   });
+  const { width } = useWindowSize();
   const [tags, setTags] = useState([]);
   const [selectStack, setSelectStack] = useState({
     frontend: true,
@@ -33,8 +29,8 @@ function SkillsSection() {
     mobile: false,
     tools: false,
   });
-  const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
+
+  const canvasSize = isScreenSize({ width, bp: "2xl" }) ? 500 : 400;
 
   const getUpdatedTags = useCallback(() => {
     const newTags = [
@@ -70,7 +66,6 @@ function SkillsSection() {
   };
 
   useEffect(() => {
-    console.log(inView);
     if (inView) {
       controls.start("visible");
     }
@@ -99,7 +94,7 @@ function SkillsSection() {
         animate={controls}
         variants={boxVariants}
       >
-        <div className="flex flex-col w-full justify-center  items-start pl-40 xl:pl-14 xl:pt-20">
+        <div className="flex flex-col w-full justify-center  items-start pl-40 xl:pl-30 xl:pt-20">
           {stacks.map((stack) => (
             <motion.div
               whileHover={{ scale: 1.1 }}
@@ -115,7 +110,7 @@ function SkillsSection() {
                 }`}
               />
               <label
-                className={`rounded cursor-pointer duration-300 transition-all ease-in-out  capitalize text-4xl h-12 p-4 ${
+                className={`rounded cursor-pointer duration-300 transition-all ease-in-out  capitalize text-3xl  2xl:text-4xl h-12 p-4 ${
                   selectStack[stack] && "bg-gray-800 shadow text-gray-50"
                 }`}
                 htmlFor="cb1"
@@ -133,7 +128,7 @@ function SkillsSection() {
         animate={controls}
         variants={boxVariants}
       >
-        <IconCloud tags={tags} height={500} />
+        <IconCloud tags={tags} height={canvasSize} width={canvasSize} />
       </motion.div>
     </section>
   );

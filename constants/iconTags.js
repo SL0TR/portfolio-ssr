@@ -37,6 +37,8 @@ import sentryIcon from "simple-icons/icons/sentry";
 import githubIcon from "simple-icons/icons/github";
 import framerIcon from "simple-icons/icons/framer";
 
+export const stacks = ["frontend", "backend", "mobile", "tools"];
+
 export const frontEndTags = [
   {
     slug: "javascript",
