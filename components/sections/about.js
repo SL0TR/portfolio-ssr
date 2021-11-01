@@ -14,7 +14,10 @@ function AboutSection() {
   });
 
   return (
-    <section className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-white z-20 overflow-hidden">
+    <section
+      id="about-me"
+      className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-white z-20 overflow-hidden"
+    >
       <SectionHeader
         style={{
           transform: `translateY(${multiplier * (aboutOffsetY * 0.3)}px)`,

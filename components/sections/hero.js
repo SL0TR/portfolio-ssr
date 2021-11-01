@@ -55,9 +55,8 @@ function HeroSection() {
             I&apos;m Mohaimin
             <br /> A Full Stack Developer
           </h1>
-          <p className="text-md mt-3">JS / TS / React / React Native / Node</p>
-          <a href="mailto:mohaiminislam94@gmail.com">
-            <button className="button text-xl mt-4">Contact Me</button>
+          <a href="#about-me">
+            <button className="button text-xl mt-4">About Me</button>
           </a>
         </div>
       </motion.div>

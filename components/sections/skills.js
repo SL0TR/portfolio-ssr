@@ -80,7 +80,10 @@ function SkillsSection() {
   }, [controls, inView]);
 
   return (
-    <section className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-gray-100">
+    <section
+      id="skills"
+      className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-gray-100"
+    >
       <SectionHeader
         style={{
           transform: `translateY(-${
