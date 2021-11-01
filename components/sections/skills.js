@@ -99,7 +99,7 @@ function SkillsSection() {
         animate={controls}
         variants={boxVariants}
       >
-        <div className="flex flex-col w-full justify-center  items-start pl-40 ">
+        <div className="flex flex-col w-full justify-center  items-start pl-40 xl:pl-14 xl:pt-20">
           {stacks.map((stack) => (
             <motion.div
               whileHover={{ scale: 1.1 }}
@@ -128,7 +128,7 @@ function SkillsSection() {
         </div>
       </motion.div>
       <motion.div
-        className="flex w-1/3 justify-center items-center"
+        className="flex w-1/3 justify-center items-center xl:pt-32 xl:px-20"
         initial="hidden"
         animate={controls}
         variants={boxVariants}

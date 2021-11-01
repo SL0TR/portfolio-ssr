@@ -26,7 +26,7 @@ function AboutSection() {
       />
       <div className="relative w-1/2">
         <div
-          className="w-full absolute z-10"
+          className="w-full absolute z-10 xl:pt-32"
           style={{
             transform: `translate(${multiplier * translateX}px, -50%)`,
             top: `50%`,
@@ -41,7 +41,7 @@ function AboutSection() {
       </div>
       <div className="relative w-1/2">
         <div
-          className="w-full h-200 absolute px-16 xl:pt-32 2xl:pt-0"
+          className="w-full h-200 absolute px-16 2xl:pt-0  xl:pt-32"
           style={{
             transform: `translate(${-(multiplier * translateX)}px, -50%)`,
             top: `50%`,

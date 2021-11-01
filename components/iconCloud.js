@@ -7,7 +7,7 @@ const getIconTags = (tags = []) =>  tags.map(tag => ({
     icon: tag?.icon,
     href: tag?.url,
     imgUrl: tag?.imgUrl || null
-  }));
+}));
 
 const addHash = (color) => color[0] === '#' ? color : `#${color}`
 
@@ -53,14 +53,10 @@ const getTag = (
      <p>{icon?.title}</p> 
     </a>
   )
-
-
 }
 
-
-function IconCloud({ tags, height = 1000, width = 500 }) {
+function IconCloud({ tags, height = 1000, width = 500, ...rest }) {
   const containerRef = useRef(null);
-
 
   useEffect(() => {
 
@@ -89,7 +85,7 @@ function IconCloud({ tags, height = 1000, width = 500 }) {
 
   return (
     
-    <div  ref={containerRef}  id="myCanvasContainer">
+    <div {...rest}  ref={containerRef}  id="myCanvasContainer">
       <canvas
           id="myCanvas"
           width={width}

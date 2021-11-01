@@ -135,7 +135,7 @@ function HeroIllust(props) {
       ></motion.path>
       <motion.path
         animate={{
-          rotate: [12, -10],
+          rotate: [-10, 12],
           transition: {
             yoyo: Infinity,
           },
