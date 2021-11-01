@@ -1,14 +1,13 @@
-import React, { useEffect, useRef } from "react"
-import simpleIcons from 'simple-icons';
+import React, { useEffect, useRef, useState } from "react"
 import {hex2rgb} from '@csstools/convert-colors'
 import { v4 as uuidv4 } from 'uuid';
 
-const getIconTags = (tags = []) =>  tags.map(icon => ({
-  id: uuidv4(),
-  icon: simpleIcons.Get(icon?.slug),
-  href: icon?.url,
-  imgUrl: icon?.imgUrl || null
-}))
+const getIconTags = (tags = []) =>  tags.map(tag => ({
+    id: uuidv4(),
+    icon: tag?.icon,
+    href: tag?.url,
+    imgUrl: tag?.imgUrl || null
+  }));
 
 const addHash = (color) => color[0] === '#' ? color : `#${color}`
 
@@ -60,8 +59,6 @@ const getTag = (
 
 
 function IconCloud({ tags, height = 1000, width = 500 }) {
-
-
   const containerRef = useRef(null);
 
 
@@ -87,6 +84,8 @@ function IconCloud({ tags, height = 1000, width = 500 }) {
       }
     }
   }, [tags]);
+
+ 
 
   return (
     
