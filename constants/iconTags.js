@@ -35,6 +35,7 @@ import jestIcon from "simple-icons/icons/jest";
 import linuxIcon from "simple-icons/icons/linux";
 import sentryIcon from "simple-icons/icons/sentry";
 import githubIcon from "simple-icons/icons/github";
+import framerIcon from "simple-icons/icons/framer";
 
 export const frontEndTags = [
   {
@@ -111,6 +112,11 @@ export const frontEndTags = [
     slug: "materialui",
     url: "https://mui.com/",
     icon: materialuiIcon,
+  },
+  {
+    slug: "framer",
+    url: "https://framer.com/",
+    icon: framerIcon,
   },
 ];
 

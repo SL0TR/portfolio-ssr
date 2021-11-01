@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { useElementSize, useTyped } from "hooks";
 import { useGlobalStateContext } from "context/GlobalContext";
+import HeroIllust from "components/heroIllust";
+import { motion } from "framer-motion";
+import { heroContentVariants } from "constants/animationVariants";
 
 function HeroSection() {
   const { offsetY, setContainerHeight } = useGlobalStateContext();
@@ -33,7 +36,12 @@ function HeroSection() {
       ref={containerHeightElem}
       className="min-h-screen flex flex-row justify-around dark:bg-gray-800 bg-gray-100"
     >
-      <div className="relative w-1/3">
+      <motion.div
+        className="relative w-1/3"
+        variants={heroContentVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div
           className="w-full h-200 absolute"
           style={{
@@ -52,7 +60,7 @@ function HeroSection() {
             <button className="button text-xl mt-4">Contact Me</button>
           </a>
         </div>
-      </div>
+      </motion.div>
 
       <div className="relative w-1/3">
         <div
@@ -63,7 +71,7 @@ function HeroSection() {
           }}
           ref={rightElem}
         >
-          <img className="px-2" src="/guy-laptop.svg" alt="mohaimin coding" />
+          <HeroIllust />
         </div>
       </div>
     </section>
