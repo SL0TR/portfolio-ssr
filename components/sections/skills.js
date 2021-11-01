@@ -30,7 +30,7 @@ function SkillsSection() {
     tools: false,
   });
 
-  const canvasSize = isScreenSize({ width, bp: "2xl" }) ? 500 : 400;
+  const canvasSize = isScreenSize({ width, bp: "2xl" }) ? 520 : 400;
 
   const getUpdatedTags = useCallback(() => {
     const newTags = [

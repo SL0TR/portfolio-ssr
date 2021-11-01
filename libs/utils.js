@@ -11,5 +11,9 @@ export function getExpInyears() {
 }
 
 export function isScreenSize({ width, bp }) {
-  return breakpoints[bp] <= width;
+  if (breakpoints[bp]) {
+    return breakpoints[bp] <= width;
+  }
+
+  return false;
 }

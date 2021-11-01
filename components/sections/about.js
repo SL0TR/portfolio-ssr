@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React from "react";
 import { useMultiplier } from "hooks";
 import { useGlobalStateContext } from "context/GlobalContext";
 import SectionHeader from "components/sectionHeader";
@@ -26,7 +26,7 @@ function AboutSection() {
       />
       <div className="relative w-1/2">
         <div
-          className="w-full absolute z-10 xl:pt-32"
+          className="w-full absolute z-10 xl:pt-16"
           style={{
             transform: `translate(${multiplier * translateX}px, -50%)`,
             top: `50%`,
@@ -41,7 +41,7 @@ function AboutSection() {
       </div>
       <div className="relative w-1/2">
         <div
-          className="w-full h-200 absolute px-16 2xl:pt-0  xl:pt-32"
+          className="w-full h-200 absolute px-16 2xl:pt-24  xl:pt-20"
           style={{
             transform: `translate(${-(multiplier * translateX)}px, -50%)`,
             top: `50%`,
