@@ -1,5 +1,5 @@
-import { useParallax } from "hooks";
-import React, { useContext, useState } from "react";
+import { useScrollYPosition } from "hooks";
+import React, { useContext } from "react";
 
 const Context = React.createContext();
 
@@ -8,15 +8,7 @@ export function useGlobalStateContext() {
 }
 
 export const ContextProvider = ({ children }) => {
-  const offsetY = useParallax();
-  const [containerHeight, setContainerHeight] = useState({
-    hero: 0,
-    about: 0,
-  });
+  const offsetY = useScrollYPosition();
 
-  return (
-    <Context.Provider value={{ offsetY, containerHeight, setContainerHeight }}>
-      {children}
-    </Context.Provider>
-  );
+  return <Context.Provider value={{ offsetY }}>{children}</Context.Provider>;
 };

@@ -60,10 +60,18 @@ function HeroIllust(props) {
         fill="#3f3d56"
         d="M29.143 18.793h-7.728v-0.159h-3.504v0.159h-7.76c-0.289 0-0.523 0.234-0.523 0.523v10.582c0 0 0 0 0 0 0 0.289 0.234 0.523 0.523 0.523h18.992c0.289 0 0.523-0.234 0.523-0.523 0 0 0 0 0 0v0-10.582c0 0 0 0 0 0 0-0.289-0.234-0.523-0.523-0.523v0z"
       ></path>
-      <path
+      <motion.path
+        animate={{
+          fill: ["#aba9c2", "#d0cde1", "#ecebf5"],
+          transition: {
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 0.8,
+          },
+        }}
         fill="#d0cde1"
         d="M20.452 22.905c0 0.641-0.52 1.161-1.161 1.161s-1.161-0.52-1.161-1.161c0-0.641 0.52-1.161 1.161-1.161s1.161 0.52 1.161 1.161z"
-      ></path>
+      ></motion.path>
       <path fill="#d0cde1" d="M3.735 30.7h1.3v1.3h-1.3v-1.3z"></path>
       <path
         fill="#3f3d56"

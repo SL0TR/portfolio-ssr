@@ -1,7 +1,6 @@
 export { default as useElementSize } from "./useElementSize";
-export { default as useParallax } from "./useParallax";
+export { default as useScrollYPosition } from "./useScrollYPosition";
 export { default as useTyped } from "./useTyped";
 export { default as useOnScreen } from "./useOnScreen";
-export { default as useMultiplier } from "./useMultiplier";
+export { default as useOnFullView } from "./useOnFullView";
 export { default as useWindowSize } from "./useWindowSize";
-export { default as useScrollProgress } from "./useScrollProgress";

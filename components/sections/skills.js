@@ -9,7 +9,7 @@ import {
 } from "constants/iconTags";
 import { useGlobalStateContext } from "context/GlobalContext";
 import { motion, useAnimation } from "framer-motion";
-import { useMultiplier, useWindowSize } from "hooks";
+import { useWindowSize } from "hooks";
 import { isScreenSize } from "libs/utils";
 import React, { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -17,10 +17,6 @@ import { useInView } from "react-intersection-observer";
 function SkillsSection() {
   const { offsetY, containerHeight } = useGlobalStateContext();
   const currentSectionOffsetY = offsetY - containerHeight?.hero * 2;
-  const [multiplier] = useMultiplier({
-    offsetY,
-    prevContainerHeight: containerHeight?.hero,
-  });
   const { width } = useWindowSize();
   const [tags, setTags] = useState([]);
   const [selectStack, setSelectStack] = useState({
@@ -79,14 +75,7 @@ function SkillsSection() {
       id="skills"
       className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-gray-100"
     >
-      <SectionHeader
-        style={{
-          transform: `translateY(-${
-            multiplier * (currentSectionOffsetY * 0.3)
-          }px)`,
-        }}
-        title="Skillset"
-      />
+      <SectionHeader title="Skillset" />
       <motion.div
         ref={ref}
         className="w-1/3 flex justify-center items-center"

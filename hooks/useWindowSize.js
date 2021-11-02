@@ -8,7 +8,6 @@ export default function useWindowSize() {
 
   const handleResize = useCallback(() => {
     const { innerWidth: width, innerHeight: height } = window;
-
     setWindowSize({ width, height });
   });
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-function useParallax() {
+function useScrollYPosition() {
   const [offsetY, setOffsetY] = useState(0);
 
   const handleScroll = useCallback(() => {
@@ -16,4 +16,4 @@ function useParallax() {
   return offsetY;
 }
 
-export default useParallax;
+export default useScrollYPosition;
