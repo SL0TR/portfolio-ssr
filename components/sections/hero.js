@@ -23,7 +23,7 @@ function HeroSection() {
         <motion.div
           className="w-full"
           variants={heroContentVariants({
-            y: !isScreenSize({ width, bp: "md" }) && 0,
+            y: !isScreenSize({ width, bp: "md" }) ? 0 : 150,
           })}
           initial="hidden"
           animate="visible"
@@ -49,7 +49,7 @@ function HeroSection() {
         <motion.div
           className="w-full"
           variants={heroImgVariants({
-            y: !isScreenSize({ width, bp: "md" }) && 0,
+            y: !isScreenSize({ width, bp: "md" }) ? 0 : 150,
           })}
           initial="hidden"
           animate="visible"
