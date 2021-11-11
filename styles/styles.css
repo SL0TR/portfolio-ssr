@@ -15,12 +15,9 @@ h1,
 h2,
 h3,
 h4,
-h5 {
-  font-family: "Roboto", sans-serif;
-}
-
+h5,
 p {
-  font-family: "Merriweather", serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .button {

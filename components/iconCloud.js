@@ -79,9 +79,8 @@ function IconCloud({ tags, height = 1000, width = 500, ...rest }) {
         containerRef?.current?.style?.display = "none";
       }
     }
-  }, [tags]);
+  }, [tags, height,  width]);
 
- 
 
   return (
     

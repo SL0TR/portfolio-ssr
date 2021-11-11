@@ -7,17 +7,13 @@ import {
   stacks,
   toolsIconTags,
 } from "constants/iconTags";
-import { useGlobalStateContext } from "context/GlobalContext";
 import { motion, useAnimation } from "framer-motion";
-import { useWindowSize } from "hooks";
-import { isScreenSize } from "libs/utils";
+import useMediaQuery from "hooks/useMediaQuery";
 import React, { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 function SkillsSection() {
-  const { offsetY, containerHeight } = useGlobalStateContext();
-  const currentSectionOffsetY = offsetY - containerHeight?.hero * 2;
-  const { width } = useWindowSize();
+  const { xxl, xl, md } = useMediaQuery();
   const [tags, setTags] = useState([]);
   const [selectStack, setSelectStack] = useState({
     frontend: true,
@@ -26,7 +22,7 @@ function SkillsSection() {
     tools: false,
   });
 
-  const canvasSize = isScreenSize({ width, bp: "2xl" }) ? 520 : 400;
+  const canvasSize = xxl ? 520 : xl ? 450 : 300;
 
   const getUpdatedTags = useCallback(() => {
     const newTags = [
@@ -73,46 +69,46 @@ function SkillsSection() {
   return (
     <section
       id="skills"
-      className="min-h-screen relative flex flex-row justify-around dark:bg-gray-800 bg-gray-100"
+      className="min-h-screen relative flex flex-col md:flex-row justify-around dark:bg-gray-800 bg-gray-100"
     >
-      <SectionHeader title="Skillset" />
+      <SectionHeader title="Skillset" animate={md} />
       <motion.div
         ref={ref}
-        className="w-1/3 flex justify-center items-center"
+        className="w-full md:w-1/2 flex justify-center items-center"
         initial="hidden"
         animate={controls}
         variants={boxVariants}
       >
-        <div className="flex flex-col w-full justify-center  items-start pl-40 xl:pl-30 xl:pt-20">
+        <div className="flex md:flex-col w-full justify-center p-5 mt-10 md:mt-0 md:px-0  items-start md:pl-16 lg:pl-40 xl:pl-64 xl:pt-20">
           {stacks.map((stack) => (
             <motion.div
               whileHover={{ scale: 1.1 }}
-              className=" my-4 relative rounded  pl-8 overflow-hidden h-12 cursor-pointer"
+              className=" my-4 relative rounded flex justify-center items-center  md:pl-8 overflow-hidden h-12 cursor-pointer"
               key={stack}
               onClick={(e) => handleClick(e, stack)}
             >
-              <input type="checkbox" name="cb" id="cb1" />
-              <span
+              <div
                 data-value={stack}
-                className={`cursor-pointer transition-all duration-300 ease-in-out rounded border-gray-900 border-2 absolute  w-6 top-1/2 -translate-y-1/2 ${
-                  selectStack[stack] ? "left-64 h-12" : "-left-px h-6"
+                className={`cursor-pointer transition-all duration-300 ease-in-out rounded border-gray-900 border-2  w-6 ${
+                  selectStack[stack]
+                    ? " translate-x-10 opacity-0 md:h-12"
+                    : "h-6 hidden md:block"
                 }`}
               />
-              <label
-                className={`rounded cursor-pointer duration-300 transition-all ease-in-out  capitalize text-3xl  2xl:text-4xl h-12 p-4 ${
+              <div
+                className={`rounded cursor-pointer duration-300 transition-all ease-in-out  capitalize md:text-3xl  2xl:text-4xl p-2  md:p-4  ${
                   selectStack[stack] && "bg-gray-800 shadow text-gray-50"
                 }`}
-                htmlFor="cb1"
                 data-value={stack}
               >
                 {stack}
-              </label>
+              </div>
             </motion.div>
           ))}
         </div>
       </motion.div>
       <motion.div
-        className="flex w-1/3 justify-center items-center xl:pt-32 xl:px-20"
+        className="flex w-full md:w-1/2 justify-center items-center xl:pt-32 xl:px-20"
         initial="hidden"
         animate={controls}
         variants={boxVariants}
