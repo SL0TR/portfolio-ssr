@@ -1,4 +1,4 @@
-import { useScrollYPosition } from "hooks";
+// import { useScrollYPosition } from "hooks";
 import React, { useContext } from "react";
 
 const Context = React.createContext();
@@ -8,7 +8,7 @@ export function useGlobalStateContext() {
 }
 
 export const ContextProvider = ({ children }) => {
-  const offsetY = useScrollYPosition();
+  // const offsetY = useScrollYPosition();
 
-  return <Context.Provider value={{ offsetY }}>{children}</Context.Provider>;
+  return <Context.Provider>{children}</Context.Provider>;
 };
