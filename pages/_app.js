@@ -1,26 +1,14 @@
-import { useState } from "react";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle, invertedTheme, theme } from "../styles";
-import '../styles/particle.css';
+import { Layout } from "components/layout";
+import { ContextProvider } from "context/GlobalContext";
+import "../styles/styles.css";
 
 function MyApp({ Component, pageProps }) {
-  const [isLightTheme, setIsLightTheme] = useState(false);
-
-  function toggleTheme() {
-    setIsLightTheme(!isLightTheme);
-  }
-
   return (
-    <>
-      <ThemeProvider theme={isLightTheme ? theme : invertedTheme}>
-        <GlobalStyle />
-        <Component
-          {...pageProps}
-          toggleTheme={toggleTheme}
-          isLightTheme={isLightTheme}
-        />
-      </ThemeProvider>
-    </>
+    <ContextProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ContextProvider>
   );
 }
 
