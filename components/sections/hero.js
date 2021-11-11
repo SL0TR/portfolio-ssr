@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useTyped, useWindowSize } from "hooks";
+import { useTyped } from "hooks";
 import HeroIllust from "components/heroIllust";
 import { motion } from "framer-motion";
 import {

@@ -41,7 +41,7 @@ export default function ParallaxItem({
     const element = ref?.current;
     // save our layout measurements in a function in order to trigger
     // it both on mount and on resize
-    console.log(element);
+
     const onResize = () => {
       if (element) {
         // use getBoundingClientRect instead of offsetTop in order to
@@ -60,7 +60,6 @@ export default function ParallaxItem({
 
   // Don't parallax if the user has "reduced motion" enabled
   if (prefersReducedMotion || !animate) {
-    console.log("got called");
     return <>{children}</>;
   }
 

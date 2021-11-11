@@ -22,8 +22,6 @@ function useMediaQuery() {
   const getBreakpoints = useCallback(() => {
     const newBreakPoints = { ...breakpoints };
 
-    console.log(width);
-
     Object.keys(breakpointSizes).forEach((key) =>
       breakpointSizes[key] <= width
         ? (newBreakPoints[key] = true)

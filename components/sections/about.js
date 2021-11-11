@@ -1,5 +1,4 @@
 import React from "react";
-import { useOnFullView } from "hooks";
 import SectionHeader from "components/sectionHeader";
 import { getExpInyears } from "libs/utils";
 import ParallaxItem from "components/parallaxItem";
