@@ -22,8 +22,6 @@ function SkillsSection() {
     tools: false,
   });
 
-  const canvasSize = xxl ? 520 : xl ? 450 : 300;
-
   const getUpdatedTags = useCallback(() => {
     const newTags = [
       ...(selectStack?.frontend ? frontEndTags : []),
@@ -113,7 +111,7 @@ function SkillsSection() {
         animate={controls}
         variants={boxVariants}
       >
-        <IconCloud tags={tags} height={canvasSize} width={canvasSize} />
+        <IconCloud tags={tags}/>
       </motion.div>
     </section>
   );
