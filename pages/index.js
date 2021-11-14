@@ -2,9 +2,29 @@ import AboutSection from "components/sections/about";
 import HeroSection from "components/sections/hero";
 import SkillsSection from "components/sections/skills";
 import Head from "next/head";
-import Script from "next/script";
+import allIcons from 'simple-icons';
+import { allUniqueSlugs } from "constants/iconTags";
+import { IconContext } from "hooks/useIconContext";
 
-export default function Home() {
+// dynamicly import during build time only the icons that are used
+export const getStaticProps = async () => {
+  const iconMap = {}
+
+  for(const slug of allUniqueSlugs) {
+    const i = allIcons.Get(slug)
+    if(i) {
+      iconMap[slug] = i
+    }
+  }
+
+  return {
+    props: {
+      iconMap
+    },
+  }
+}
+
+export default function Home({iconMap}) {
   return (
     <div className="flex flex-col min-h-screen ">
       <Head>
@@ -29,14 +49,11 @@ export default function Home() {
       </Head>
 
       <main className="flex flex-col w-full ">
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-
-        <Script
-          strategy="beforeInteractive"
-          src="https://www.goat1000.com/tagcanvas.min.js"
-        />
+        <IconContext.Provider value={iconMap}>
+          <HeroSection />
+          <AboutSection />
+          <SkillsSection />
+        </IconContext.Provider>
       </main>
     </div>
   );

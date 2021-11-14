@@ -289,3 +289,18 @@ export const toolsIconTags = [
     icon: githubIcon,
   },
 ];
+
+export const makeTagsUnique = (tags) => {
+  const unique = {};
+  tags.forEach((tag) => {
+    unique[tag.slug] = tag;
+  })
+  return Object.values(unique);
+}
+
+export const allUniqueSlugs = makeTagsUnique([
+  ...frontEndTags,
+  ...backendIconTags,
+  ...mobileIconsTags,
+  ...toolsIconTags,
+]).map(t => t.slug);
