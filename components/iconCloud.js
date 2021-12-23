@@ -1,99 +1,91 @@
-import React, { useEffect, useRef, useState } from "react"
-import {hex2rgb} from '@csstools/convert-colors'
-import { v4 as uuidv4 } from 'uuid';
+import {renderSimpleIcon, Cloud, renderImg} from 'react-icon-cloud'
+import { makeTagsUnique } from 'constants/iconTags'
+import useMediaQuery from 'hooks/useMediaQuery'
+import { useIconContext } from 'hooks/useIconContext'
 
-const getIconTags = (tags = []) =>  tags.map(tag => ({
-    id: uuidv4(),
-    icon: tag?.icon,
-    href: tag?.url,
-    imgUrl: tag?.imgUrl || null
-}));
+const IconCloud = ({tags}) => {
+  // this component is rendering everytime the widthis changed
+  // you could possibly refractor this hook to only fire when a new breakpoint is reached
+  const { xxl, xl, md } = useMediaQuery();
+  const iconMap = useIconContext();
+  const canvasSize = xxl ? 520 : xl ? 450 : 300;
+  const unquie = makeTagsUnique(tags);
+  const size = xxl ? 32 : xl ? 24 : 16
 
-const addHash = (color) => color[0] === '#' ? color : `#${color}`
-
-const getSvgIconUrl = (icon) => {
-
-  if(!icon) {
-    return null;
+  // in the skills, you may want to pass some icons to useState, so this check can be removed
+  if(!tags || tags.length === 0) {
+    return null
   }
-  const originalHex =  addHash(icon.hex)
-  const rgb = hex2rgb(originalHex);
-  const [r,g,b] = rgb.map((percent) => Math.round((percent / 100) * 255));
 
-  return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" style="fill: rgb(${r}, ${g}, ${b});" viewBox="0 0 24 24" height="${32}px" width="${32}px"> <title>${icon.title}</title> <path d="${icon.path}"></path> </svg>`
+  const renderdAnchorTags = []
 
-} 
+  for(const tag of unquie) {
 
-const getTag = (
-  {
-    id,
-    imgWidth = 32,
-    imgHeight = 32,
-    href,
-    icon,
-    imgUrl
-}
-) => {
-  return (
-    <a 
-      key={id} 
-      href={href ? href : 'www.google.com'} 
-      title={icon?.title}
-      target="_blank"
-      rel="noopener"
-      style={{ cursor: 'pointer'}}
-    >
-      
-        <img 
-          height={imgHeight}
-          width={imgWidth}
-          alt={icon?.title} 
-          src={imgUrl ? imgUrl : getSvgIconUrl(icon)} 
-        />
-     <p>{icon?.title}</p> 
-    </a>
-  )
-}
-
-function IconCloud({ tags, height = 1000, width = 500, ...rest }) {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-
-    try {
-      TagCanvas.Start("myCanvas", null, {
-        maxSpeed: 0.08,
-        reverse: true,
-        depth: 1,
-        wheelZoom: false,
-        imageScale: 2,
-        activeCursor: "default",
-        tooltip: "native",
-        initial: [0.1, -0.1],
-        clickToFront: 500,
-        tooltipDelay: 0,
-        outlineColour: "#0000",
-      });
-    } catch (e) {
-      if(containerRef?.current) {
-        containerRef?.current?.style?.display = "none";
-      }
+    if(tag.imgUrl){
+      renderdAnchorTags.push(
+        renderImg({
+          aProps: {
+            href: tag.url,
+            alt: tag.slug,
+            rel: "noreferrer",
+            target: "_blank",
+          },
+          imgProps: {
+            src: tag.imgUrl,
+            width: size,
+            height: size,
+            href: tag.url,
+            rel: "noreferrer",
+            target: "_blank"
+          },
+        })
+      )
+      continue
     }
-  }, [tags, height,  width]);
 
+    if(!iconMap[tag.slug]) {
+      if(process.env.NODE_ENV === 'development') {
+        console.error(`icon ${tag} is not defined in the iconMap`)
+      }
+      continue
+    }
 
-  return (
-    
-    <div {...rest}  ref={containerRef}  id="myCanvasContainer">
-      <canvas
-          id="myCanvas"
-          width={width}
-          height={height}
-        >
-        {getIconTags(tags).map(getTag)}
-      </canvas>
-    </div>
-  )
+    renderdAnchorTags.push(
+      renderSimpleIcon({
+        icon: iconMap[tag.slug],
+        size,
+        bgHex: '#fff',
+        fallbackHex: '#000',
+        minContrastRatio: 1,
+      })
+    )
+  }
+
+  const options = {
+    maxSpeed: 0.08,
+    reverse: true,
+    depth: 1,
+    wheelZoom: false,
+    imageScale: 2,
+    activeCursor: "default",
+    tooltip: "native",
+    initial: [0.1, -0.1],
+    clickToFront: 500,
+    tooltipDelay: 0,
+    outlineColour: "#0000",
+  }
+
+  return <Cloud
+    options={options}
+    containerProps={{}}
+    canvasProps={{
+      width: canvasSize,
+      height: canvasSize,
+    }}
+  >
+    {renderdAnchorTags}
+  </Cloud>
+
 }
-
 export default IconCloud
+
