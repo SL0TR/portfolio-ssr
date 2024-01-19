@@ -1,30 +1,31 @@
 import AboutSection from "components/sections/about";
 import HeroSection from "components/sections/hero";
 import SkillsSection from "components/sections/skills";
+import NewSiteLink from "components/newSiteLink";
 import Head from "next/head";
-import allIcons from 'simple-icons';
+import allIcons from "simple-icons";
 import { allUniqueSlugs } from "constants/iconTags";
 import { IconContext } from "hooks/useIconContext";
 
 // dynamicly import during build time only the icons that are used
 export const getStaticProps = async () => {
-  const iconMap = {}
+  const iconMap = {};
 
-  for(const slug of allUniqueSlugs) {
-    const i = allIcons.Get(slug)
-    if(i) {
-      iconMap[slug] = i
+  for (const slug of allUniqueSlugs) {
+    const i = allIcons.Get(slug);
+    if (i) {
+      iconMap[slug] = i;
     }
   }
 
   return {
     props: {
-      iconMap
+      iconMap,
     },
-  }
-}
+  };
+};
 
-export default function Home({iconMap}) {
+export default function Home({ iconMap }) {
   return (
     <div className="flex flex-col min-h-screen ">
       <Head>
@@ -49,6 +50,7 @@ export default function Home({iconMap}) {
       </Head>
 
       <main className="flex flex-col w-full ">
+        <NewSiteLink />
         <IconContext.Provider value={iconMap}>
           <HeroSection />
           <AboutSection />

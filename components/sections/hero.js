@@ -19,7 +19,7 @@ function HeroSection() {
 
   return (
     <section className="min-h-screen flex p-10 xl:p-0 flex-col xl:flex-row  justify-around dark:bg-gray-800 bg-gray-100">
-      <div className="flex w-full xl:w-1/2 xl:p-20 justify-center items-center">
+      <div className="flex w-full xl:w-1/2 xl:p-20 justify-center items-center mt-10 xl:mt-0">
         <motion.div
           className="w-full"
           variants={heroContentVariants({
